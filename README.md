@@ -1,5 +1,4 @@
 # cs4500 Project
-======
 
 ## Useful links
 
