@@ -2,8 +2,9 @@
 
 ## Useful links
 
-- [Project Homepage](https://cs4500.billmollonline.com)
-- [Update the Homepage](https://cs4500.billmollonline.com/update)
+- [Project Homepage](http://cs4500.billmollonline.com)
+- [Update the Homepage](http://cs4500.billmollonline.com/update)
+- [Project GitLab Page](https://gitlab.billmollonline.com/thsmrtone1/cs4500)
 - [Useful git cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf)
 - [Download git](https://git-scm.com/downloads)
 
