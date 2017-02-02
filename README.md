@@ -5,6 +5,7 @@
 - [Project Homepage](https://cs4500.billmollonline.com)
 - [Update the Homepage](https://cs4500.billmollonline.com/update)
 - [Useful git cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf)
+- [Download git](https://git-scm.com/downloads)
 
 ## How to use git
 
