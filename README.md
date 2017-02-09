@@ -1,49 +1,42 @@
-# cs4500 Project
+# Requirements for a GPA Calculator
 
-## Useful links
+1. A GPA calculator would be hosted on the website http://www.umsl.edu/advising as a resource for students, faculty and staff to help students project their gpa over the course of the semester. The calculator would help students who would need a specific gpa to meet academic policies such as probation, latin honors, or minimum gpa’s for admission to upper level courses.
 
-- [Project Homepage](http://cs4500.billmollonline.com)
-- [Update the Homepage](http://cs4500.billmollonline.com/update)
-- [Project GitLab Page](https://gitlab.billmollonline.com/thsmrtone1/cs4500)
-- [Useful git cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf)
-- [Download git](https://git-scm.com/downloads)
+2. The calculator should be web-based.  An mobile device version would be desirable but not necessary
 
-## How to use git
+3. We would like this calculator modeled after  http://ls-commons.berkeley.edu/gpa_calc.html
 
-All commands assume your current directory 'cd' is the repo directory (except for 'git clone')
+4. The calculator would start with the current GPA and number of credit hours with a letter grade. (S, U, EX, EX-F, and Y do not count in a GPA)
 
-#### Clone the Repository (only needed initially)
+5. The projected grade and credit hours would be entered for each course. A student can have the option to substitute a grade if the student is repeating the course.  The grade points and credit hours would need to be removed for the previous grade and the projected grade would be used.
 
-```
-cd <parent_dir>    // Parent directory where you want to put the cloned repo
-git pull https://gitlab.billmollonline.com/thsmrtone1/cs4500.git
-// You will need to enter your gitlab username and password
-```
+6. The questions “Repeat?” should default to  “No”
 
-#### Pull updates into your 'local' repo
+7. The “Previous Grade” list should be C-, D+, D, D-, F, and FN.
 
-```
-git pull
-```
+8. The Grade Points will appear in their own column. Grade points = credit hours multiplied by grade value
 
-#### Add files to git
+9. A projected GPA with credit hours will appear after the form is completed and a submit button is clicked. 
 
-You need to do this if you've created a new file. This command will add all new files in your local repo. You have the option of adding only specific [file]s.
+10. A reset button should also be added clearing the form
 
-```
-git add [file]
-```
+11. The formula for a g.p.a is the sum of grade points divided by credit hours. 
 
-#### Commit changes
+12. Here are the grade values for UMSL:
 
-You will be asked to write a summary of your commit.
+      [A]  => 4.0
+      [A-] => 3.7
+      [B+] => 3.3
+      [B]  => 3.0
+      [B-] => 2.7
+      [C+] => 2.3
+      [C]  => 2.0
+      [C-] => 1.7
+      [D+] => 1.3
+      [D]  => 1.0
+      [D-] => 0.7
+      [F]  => 0
+      [FN] => 0
 
-```
-git commit
-```
+13. A “What GPA would I need to get X GPA?” option would be nice but not necessary. Students would enter the remaining credit hours and desired gpa.  An average gpa would be displayed.
 
-#### Push your commits to the gitlab repo
-
-```
-git push
-```
