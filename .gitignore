@@ -4,3 +4,9 @@
 ._*
 Thumbs.db
 
+# npm/react
+/node_modules/
+coverage
+build
+.env
+npm-debug.log
