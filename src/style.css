@@ -1,1 +1,43 @@
-/* Styles here! */
+.jumbotron {
+    background-color: #333;
+}
+
+.sub-jumbotron {
+    position: relative;
+    top: -15px;
+    margin: 0;
+    padding: 20px 50px;
+    background: rgb(152, 30, 50);
+
+}
+
+.logo img {
+    height: 67px;
+}
+
+a.logo {
+    display: inline-block;
+}
+
+.sub-logo {
+    display: inline-block;
+    color: white;
+    vertical-align: bottom;
+    font-size: 20px;
+}
+
+.jumbo-header {
+    color: white;
+    padding: 0 50px;
+    position: relative;
+    top: 40px;
+}
+
+.form-horizontal {
+    border: none;
+    padding: 0;
+}
+
+.form-horizontal .control-label {
+    padding-bottom: 0;
+}
