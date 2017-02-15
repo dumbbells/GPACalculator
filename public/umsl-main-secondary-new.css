@@ -2096,7 +2096,7 @@ table img{
 }
 .mobile-main-nav ul li ul li a {
     display: block;
-    background: rgb(34, 34, 34)
+    background: rgb(34, 34, 34);
     padding: 3px 8px;
     color: #fff;
     font-size: 15px;
@@ -2512,7 +2512,7 @@ table img{
 }
 
 .form-horizontal{
-   background:#ffff;
+   background:#fff;
     padding:40px 50px 40px 50px;
     text-align:left;
     border:10px solid #f9f9f9;
