@@ -36,17 +36,17 @@ class CourseTable extends Component {
         var rows = this.props.rows.map(function(row, index) {
             return(
                 <tr key={index} data-course-id={row.id}>
-                    <td>Course {row.id + 1}</td>
-                    <td><input className="calculator-units" type="text" onChange={this.onUnitChange} /></td>
+                    <td><p className="form-control-static">Course {row.id + 1}</p></td>
+                    <td><input className="form-control calculator-units" type="text" onChange={this.onUnitChange} /></td>
                     <td>
-                        <select className="calculator-repeat" onChange={this.onRepeatChange}>
+                        <select className="form-control calculator-repeat" onChange={this.onRepeatChange}>
                             <option></option>
                             <option value="1">Yes</option>
                             <option value="0">No</option>
                         </select>
                     </td>
-                    <td><input className="calculator-previous-grade" type="text" onChange={this.onPrevGradeChange} /></td>
-                    <td><input className="calculator-projected-grade" type="text" onChange={this.onProjGradeChange} /></td>
+                    <td><input className="form-control calculator-previous-grade" type="text" onChange={this.onPrevGradeChange} /></td>
+                    <td><input className="form-control calculator-projected-grade" type="text" onChange={this.onProjGradeChange} /></td>
                 </tr>
             );
         }.bind(this));
@@ -65,8 +65,14 @@ class CourseTable extends Component {
                     <tbody>
                         {rows}
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colSpan="5">
+                                <button type="button" className="pull-right btn btn-default" onClick={this.props.addCourse}><span className="glyphicon glyphicon-plus"></span> Add Course</button>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
-                <button id="add-button" onClick={this.props.addCourse}>Add Course</button>
             </div>
         );
     }
