@@ -33,13 +33,9 @@ a.logo {
     top: 40px;
 }
 
-.form-horizontal {
-    border: none;
-    padding: 0;
-}
-
-.form-horizontal .control-label {
-    padding-bottom: 0;
+.side-padding {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 
