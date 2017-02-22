@@ -151,7 +151,7 @@ class GpaCalculator extends Component {
         
         if(total_hours_attempted === 0) return;
         
-        this.setState({calculatedGpa: future_gpa});
+        this.setState({calculatedGpa: future_gpa.toFixed(3)});
     }
     
     reset() {
