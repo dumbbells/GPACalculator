@@ -10,6 +10,7 @@ class CourseTable extends Component {
         this.onRepeatChange = this.onRepeatChange.bind(this);
         this.onPrevGradeChange = this.onPrevGradeChange.bind(this);
         this.onProjGradeChange = this.onProjGradeChange.bind(this);
+        this.onRemove = this.onRemove.bind(this);
     }
     
     onUnitChange(e) {
@@ -19,7 +20,7 @@ class CourseTable extends Component {
     
     onRepeatChange(e) {
         var courseid = $(e.target).parents("tr").attr("data-course-id");
-        this.props.onChange("repeat", courseid, e.target.value);
+        this.props.onChange("repeat", courseid, e.target.checked);
     }
     
     onPrevGradeChange(e) {
@@ -32,26 +33,75 @@ class CourseTable extends Component {
         this.props.onChange("proj-grade", courseid, e.target.value);
     }
     
+    onRemove(e) {
+        var courseid = $(e.target).parents("tr").attr("data-course-id");
+        this.props.onChange("remove", courseid, e.target.value);
+    }
+    
     render() {
         var rows = this.props.rows.map(function(row, index) {
+            var disable_prev_grd_chkbx = row.repeat ? false : true;
             return(
-                <tr key={index} data-course-id={row.id}>
-                    <td><p className="form-control-static">Course {row.id + 1}</p></td>
-                    <td><input className="form-control calculator-units" type="text" onChange={this.onUnitChange} /></td>
+                <tr key={row.id} data-course-id={index}>
+                    <td><p className="form-control-static">Course {index + 1}</p></td>
                     <td>
-                        <select className="form-control calculator-repeat" onChange={this.onRepeatChange}>
+                        <select className="form-control calculator-units" onChange={this.onUnitChange}>
                             <option></option>
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
                         </select>
                     </td>
-                    <td><input className="form-control calculator-previous-grade" type="text" onChange={this.onPrevGradeChange} /></td>
-                    <td><input className="form-control calculator-projected-grade" type="text" onChange={this.onProjGradeChange} /></td>
+                    <td>
+                        <label className="checkbox-inline">
+                            <input className="calculator-repeat" type="checkbox" onChange={this.onRepeatChange} />
+                        </label>
+                    </td>
+                    <td>
+                        <select className="form-control calculator-previous-grade" onChange={this.onPrevGradeChange} disabled={disable_prev_grd_chkbx}>
+                            <option></option>
+                            <option>A</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B</option>
+                            <option>B-</option>
+                            <option>C+</option>
+                            <option>C</option>
+                            <option>C-</option>
+                            <option>D+</option>
+                            <option>D</option>
+                            <option>D-</option>
+                            <option>F</option>
+                            <option>FN</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select className="form-control calculator-projected-grade" onChange={this.onProjGradeChange}>
+                            <option></option>
+                            <option>A</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B</option>
+                            <option>B-</option>
+                            <option>C+</option>
+                            <option>C</option>
+                            <option>C-</option>
+                            <option>D+</option>
+                            <option>D</option>
+                            <option>D-</option>
+                            <option>F</option>
+                            <option>FN</option>
+                        </select>
+                    </td>
+                    <td><button type="button" className="form-control-static close" onClick={this.onRemove}><span className="glyphicon glyphicon-remove"></span></button></td>
                 </tr>
             );
         }.bind(this));
         return (
             <div>
+                <form>
                 <table className="table">
                     <thead>
                         <tr>
@@ -60,6 +110,7 @@ class CourseTable extends Component {
                             <th>Repeat?</th>
                             <th>Previous Grade</th>
                             <th>Projected Grade</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,12 +118,13 @@ class CourseTable extends Component {
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colSpan="5">
+                            <td colSpan="6">
                                 <button type="button" className="pull-right btn btn-default" onClick={this.props.addCourse}><span className="glyphicon glyphicon-plus"></span> Add Course</button>
                             </td>
                         </tr>
                     </tfoot>
                 </table>
+                </form>
             </div>
         );
     }
