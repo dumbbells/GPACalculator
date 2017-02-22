@@ -121,13 +121,13 @@ class GpaCalculator extends Component {
         
         for(var i = 0; i < rows.length; i++)
         {
-            if(rows[i].units == undefined || rows[i].projectedGrade == undefined || rows[i].units == 0 || rows[i].projectedGrade == "")
+            if(rows[i].units === undefined || rows[i].projectedGrade === undefined || rows[i].units === 0 || rows[i].projectedGrade === "")
             {
                 this.setState({calculatedGpa: "Form needs more information"});
                 return;
             }
             
-            if(rows[i].repeat == true && (rows[i].previousGrade == undefined || rows[i].previousGrade == ""))
+            if(rows[i].repeat === true && (rows[i].previousGrade === undefined || rows[i].previousGrade === ""))
             {
                 this.setState({calculatedGpa: "Form needs more information"});
                 return;
