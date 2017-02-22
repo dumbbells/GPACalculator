@@ -60,22 +60,7 @@ class CourseTable extends Component {
                         </label>
                     </td>
                     <td>
-                        <select className="form-control calculator-previous-grade" onChange={this.onPrevGradeChange} disabled={disable_prev_grd_chkbx}>
-                            <option></option>
-                            <option>A</option>
-                            <option>A-</option>
-                            <option>B+</option>
-                            <option>B</option>
-                            <option>B-</option>
-                            <option>C+</option>
-                            <option>C</option>
-                            <option>C-</option>
-                            <option>D+</option>
-                            <option>D</option>
-                            <option>D-</option>
-                            <option>F</option>
-                            <option>FN</option>
-                        </select>
+                        <PreviousGradeSelectBox onPrevGradeChange={this.onPrevGradeChange} disabled={disable_prev_grd_chkbx} />
                     </td>
                     <td>
                         <select className="form-control calculator-projected-grade" onChange={this.onProjGradeChange}>
@@ -127,6 +112,54 @@ class CourseTable extends Component {
                 </form>
             </div>
         );
+    }
+}
+
+class PreviousGradeSelectBox extends Component {
+
+    render() {
+        if(this.props.disabled)
+        {
+            return(
+                <select className="form-control calculator-previous-grade" onChange={this.props.onPrevGradeChange} value="" disabled={this.props.disabled}>
+                    <option></option>
+                    <option>A</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B</option>
+                    <option>B-</option>
+                    <option>C+</option>
+                    <option>C</option>
+                    <option>C-</option>
+                    <option>D+</option>
+                    <option>D</option>
+                    <option>D-</option>
+                    <option>F</option>
+                    <option>FN</option>
+                </select>
+            );
+        }
+        else
+        {
+            return(
+                <select className="form-control calculator-previous-grade" onChange={this.props.onPrevGradeChange} disabled={this.props.disabled}>
+                    <option></option>
+                    <option>A</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B</option>
+                    <option>B-</option>
+                    <option>C+</option>
+                    <option>C</option>
+                    <option>C-</option>
+                    <option>D+</option>
+                    <option>D</option>
+                    <option>D-</option>
+                    <option>F</option>
+                    <option>FN</option>
+                </select>
+            );
+        }
     }
 }
 

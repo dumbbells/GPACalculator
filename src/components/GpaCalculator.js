@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import CurrentGPA from './CurrentGPA';
 import CourseTable from './CourseTable';
-import Course from '../objects/course';
+import Course from '../objects/Course';
 import GpaMapping from '../objects/GpaMapping';
+import Results from './Results';
 
 class GpaCalculator extends Component {
     
@@ -14,7 +15,8 @@ class GpaCalculator extends Component {
         this.state = {
             rows: [],
             currentGpa: 0,
-            unitsAttempted: 0
+            unitsAttempted: 0,
+            calculatedGpa: 0
         };
         
         this.onChange = this.onChange.bind(this);
@@ -31,8 +33,11 @@ class GpaCalculator extends Component {
         this.setState({
             rows: [course],
             currentGpa: 0,
-            unitsAttempted: 0
+            unitsAttempted: 0,
+            calculatedGpa: 0
         });
+        
+        this.calculate();
     }
     
     addCourse() {
@@ -56,6 +61,7 @@ class GpaCalculator extends Component {
                 break;
             case "repeat":
                 rows[courseid].repeat = value;
+                rows[courseid].previousGrade = "";
                 this.setState({rows: rows});
                 break;
             case "prev-grade":
@@ -67,7 +73,6 @@ class GpaCalculator extends Component {
                 this.setState({rows: rows});
                 break;
             case "remove":
-                var rows = this.state.rows;
                 if(rows.length > 1)
                 {
                     rows.splice(courseid, 1);
@@ -77,6 +82,8 @@ class GpaCalculator extends Component {
             default:
                 break;
         }
+        
+        this.calculate();
     }
     
     onCurrentGpaChange(value) {
@@ -90,10 +97,16 @@ class GpaCalculator extends Component {
     calculate() {
         var rows = this.state.rows;
         
+        if(this.state.unitsAttempted === 0 || this.state.currentGpa === 0)
+        {
+            //TODO: zero is an unacceptable check value
+            this.setState({calculatedGpa: "Form needs more information"});
+            return;
+        }
+        
         var current_hours_attempted = this.state.unitsAttempted;
         var current_gpa = this.state.currentGpa;
         var current_grade_points = current_gpa * current_hours_attempted;
-        console.log("current_grade_points "+current_grade_points);
         
         var total_hours_attempted = 0;
         var upcoming_grade_points = 0;
@@ -102,25 +115,37 @@ class GpaCalculator extends Component {
         
         for(var i = 0; i < rows.length; i++)
         {
-            total_hours_attempted += Number(rows[i].units);
+            if(rows[i].units == undefined || rows[i].projectedGrade == undefined || rows[i].units == 0 || rows[i].projectedGrade == "")
+            {
+                this.setState({calculatedGpa: "Form needs more information"});
+                return;
+            }
+            
+            if(rows[i].repeat == true && (rows[i].previousGrade == undefined || rows[i].previousGrade == ""))
+            {
+                this.setState({calculatedGpa: "Form needs more information"});
+                return;
+            }
+            
+            if(rows[i].repeat)
+            {
+                current_grade_points -= Number(rows[i].units * GpaMapping.getPoints(rows[i].previousGrade));
+            }
+            else
+            {
+                total_hours_attempted += Number(rows[i].units);
+            }
+            
             upcoming_grade_points += Number(rows[i].units * GpaMapping.getPoints(rows[i].projectedGrade));
         }
         
         var total_grade_points = current_grade_points + upcoming_grade_points;
         var future_gpa = total_grade_points / total_hours_attempted;
-        console.log("total_grade_points "+total_grade_points);
-        console.log("total_hours_attempted "+total_hours_attempted);
         
         
         if(total_hours_attempted === 0) return;
         
-        console.log(future_gpa);
-        /*
-         * current_grade_points = current_gpa * hours_attempted
-         * total_hours_attempted = current_hours_attempted + upcoming_hours_attempted
-         * total_grade_points = current_grade_points + upcoming_grade_points
-         * future_gpa = total_grade_points / total_hours_attempted
-         */
+        this.setState({calculatedGpa: future_gpa});
     }
     
     render() {
@@ -129,7 +154,7 @@ class GpaCalculator extends Component {
                 <h1>GPA Calculator</h1>
                 <CurrentGPA onCurrentGpaChange={this.onCurrentGpaChange} onUnitsAttemptedChange={this.onUnitsAttemptedChange} />
                 <CourseTable rows={this.state.rows} onChange={this.onChange} addCourse={this.addCourse} />
-                <button onClick={this.calculate}>Click</button>
+                <Results gpa={this.state.calculatedGpa} />
             </div>
         );
     }
