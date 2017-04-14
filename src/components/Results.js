@@ -33,6 +33,18 @@ class Results extends Component {
             return;
         }
         
+        if(this.props.unitsAttempted < 0)
+        {
+            this.setState({calculatedGpa: "Units attempted cannot be a negative value"});
+            return;
+        }
+        
+        if(this.props.currentGpa < 0)
+        {
+            this.setState({calculatedGpa: "Current GPA cannot be a negative value"});
+            return;
+        }
+        
         var current_hours_attempted = this.props.unitsAttempted;
         var current_gpa = this.props.currentGpa;
         var current_grade_points = current_gpa * current_hours_attempted;
