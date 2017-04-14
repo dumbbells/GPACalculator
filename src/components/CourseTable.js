@@ -63,22 +63,7 @@ class CourseTable extends Component {
                         <PreviousGradeSelectBox onPrevGradeChange={this.onPrevGradeChange} disabled={disable_prev_grd_chkbx} />
                     </td>
                     <td>
-                        <select className="form-control calculator-projected-grade" onChange={this.onProjGradeChange}>
-                            <option></option>
-                            <option>A</option>
-                            <option>A-</option>
-                            <option>B+</option>
-                            <option>B</option>
-                            <option>B-</option>
-                            <option>C+</option>
-                            <option>C</option>
-                            <option>C-</option>
-                            <option>D+</option>
-                            <option>D</option>
-                            <option>D-</option>
-                            <option>F</option>
-                            <option>FN</option>
-                        </select>
+                        <ProjectedGradeSelectBox prevGrade={row.previousGrade} onChange={this.onProjGradeChange} />
                     </td>
                     <td><button type="button" className="form-control-static close" onClick={this.onRemove}><span className="glyphicon glyphicon-remove"></span></button></td>
                 </tr>
@@ -158,6 +143,30 @@ class PreviousGradeSelectBox extends Component {
                 </select>
             );
         }
+    }
+}
+
+class ProjectedGradeSelectBox extends Component {
+
+    render() {
+        return(
+            <select className="form-control calculator-projected-grade" onChange={this.props.onChange}>
+                <option></option>
+                <option>A</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B</option>
+                <option>B-</option>
+                <option>C+</option>
+                <option>C</option>
+                <option>C-</option>
+                <option>D+</option>
+                <option>D</option>
+                <option>D-</option>
+                <option>F</option>
+                <option>FN</option>
+            </select>
+        );
     }
 }
 
