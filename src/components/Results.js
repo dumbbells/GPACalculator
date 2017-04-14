@@ -26,7 +26,7 @@ class Results extends Component {
     calculate() {
         var rows = this.props.rows;
         
-        if(this.props.unitsAttempted === 0 || this.props.currentGpa === 0)
+        if(this.props.unitsAttempted == 0 || this.props.currentGpa == 0)
         {
             //TODO: zero is an unacceptable check value
             this.setState({calculatedGpa: "Form needs more information"});
