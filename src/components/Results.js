@@ -28,7 +28,6 @@ class Results extends Component {
         
         if(this.props.unitsAttempted == 0 || this.props.currentGpa == 0)
         {
-            //TODO: zero is an unacceptable check value
             this.setState({calculatedGpa: "Form needs more information"});
             return;
         }
@@ -56,7 +55,8 @@ class Results extends Component {
         
         for(var i = 0; i < rows.length; i++)
         {
-            if(rows[i].units === undefined || rows[i].projectedGrade === undefined || rows[i].units === 0 || rows[i].projectedGrade === "")
+            console.log(rows[i]);
+            if(rows[i].units === undefined || rows[i].units === "" || rows[i].projectedGrade === undefined || rows[i].units === 0 || rows[i].projectedGrade === "")
             {
                 this.setState({calculatedGpa: "Form needs more information"});
                 return;
