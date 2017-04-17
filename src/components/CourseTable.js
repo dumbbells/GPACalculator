@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import SelectMapping from '../objects/SelectMapping.js';
 
 class CourseTable extends Component {
     
@@ -62,9 +63,11 @@ class CourseTable extends Component {
                     <td>
                         <PreviousGradeSelectBox onPrevGradeChange={this.onPrevGradeChange} disabled={disable_prev_grd_chkbx} />
                     </td>
+                    
                     <td>
                         <ProjectedGradeSelectBox prevGrade={row.previousGrade} onChange={this.onProjGradeChange} />
                     </td>
+                    
                     <td><button type="button" className="form-control-static close" onClick={this.onRemove}><span className="glyphicon glyphicon-remove"></span></button></td>
                 </tr>
             );
@@ -149,22 +152,17 @@ class PreviousGradeSelectBox extends Component {
 class ProjectedGradeSelectBox extends Component {
 
     render() {
+        var grades = SelectMapping.getGrades(this.props.prevGrade);
+        var options = grades.map(function(grade, index) {
+            return(
+                <option key={index}>{grade}</option>
+            );
+        });
+        
         return(
             <select className="form-control calculator-projected-grade" onChange={this.props.onChange}>
                 <option></option>
-                <option>A</option>
-                <option>A-</option>
-                <option>B+</option>
-                <option>B</option>
-                <option>B-</option>
-                <option>C+</option>
-                <option>C</option>
-                <option>C-</option>
-                <option>D+</option>
-                <option>D</option>
-                <option>D-</option>
-                <option>F</option>
-                <option>FN</option>
+                {options}
             </select>
         );
     }
