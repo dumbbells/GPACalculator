@@ -43,6 +43,11 @@ class Results extends Component {
             this.setState({calculatedGpa: "Current GPA cannot be a negative value"});
             return;
         }
+        if(this.props.currentGpa > 4)
+        {
+            this.setState({calculatedGpa: "Current GPA cannot be over 4.0"});
+            return;
+        }
         
         var current_hours_attempted = this.props.unitsAttempted;
         var current_gpa = this.props.currentGpa;
