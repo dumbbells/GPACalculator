@@ -132,11 +132,6 @@ class PreviousGradeSelectBox extends Component {
             return(
                 <select className="form-control calculator-previous-grade" onChange={this.props.onPrevGradeChange} disabled={this.props.disabled}>
                     <option></option>
-                    <option>B+</option>
-                    <option>B</option>
-                    <option>B-</option>
-                    <option>C+</option>
-                    <option>C</option>
                     <option>C-</option>
                     <option>D+</option>
                     <option>D</option>
