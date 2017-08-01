@@ -1,4 +1,32 @@
-# Requirements for a GPA Calculator
+# GPA Calculator
+
+## Installation
+
+***Requires node.js or npm package manager to build.***
+
+1. Clone the repo
+
+    ```
+    git clone https://gitlab.billmollonline.com/thsmrtone1/cs4500.git
+    ```
+
+2. `cd` to project directory
+
+3. install node dependencies
+
+    ```
+    npm install
+    ```
+
+4. Build project
+
+    ```
+    npm run build
+    ```
+
+5. All required production files will now be in the 'build' folder
+
+## Requirements for a GPA Calculator
 
 1. A GPA calculator would be hosted on the website http://www.umsl.edu/advising as a resource for students, faculty and staff to help students project their gpa over the course of the semester. The calculator would help students who would need a specific gpa to meet academic policies such as probation, latin honors, or minimum gpa’s for admission to upper level courses.
 
