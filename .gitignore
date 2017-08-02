@@ -10,3 +10,4 @@ coverage
 build
 .env
 npm-debug.log
+package-lock.json

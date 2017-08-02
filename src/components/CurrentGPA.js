@@ -23,11 +23,11 @@ class CurrentGPA extends Component {
                 <form className="form-inline">
                     <div className="form-group">
                         <label htmlFor="current-gpa" className="control-label side-padding">Current GPA</label>
-                        <input type="text" className="form-control" id="current-gpa" onChange={this.onCurrentGpaChange} />
+                        <input type="text" className="form-control" id="current-gpa" autocomplete="off" onChange={this.onCurrentGpaChange} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="units-attempted" className="control-label side-padding">Units Attempted</label>
-                        <input type="text" className="form-control" id="units-attempted" onChange={this.onUnitsAttemptedChange} />
+                        <input type="text" className="form-control" id="units-attempted" autocomplete="off" onChange={this.onUnitsAttemptedChange} />
                     </div>
                 </form>
             </div>
