@@ -3,42 +3,42 @@ import $ from 'jquery';
 import SelectMapping from '../objects/SelectMapping.js';
 
 class CourseTable extends Component {
-    
+
     constructor(props) {
         super(props);
-        
+
         this.onUnitChange = this.onUnitChange.bind(this);
         this.onRepeatChange = this.onRepeatChange.bind(this);
         this.onPrevGradeChange = this.onPrevGradeChange.bind(this);
         this.onProjGradeChange = this.onProjGradeChange.bind(this);
         this.onRemove = this.onRemove.bind(this);
     }
-    
+
     onUnitChange(e) {
         var courseid = $(e.target).parents("tr").attr("data-course-id");
         this.props.onChange("units", courseid, e.target.value);
     }
-    
+
     onRepeatChange(e) {
         var courseid = $(e.target).parents("tr").attr("data-course-id");
         this.props.onChange("repeat", courseid, e.target.checked);
     }
-    
+
     onPrevGradeChange(e) {
         var courseid = $(e.target).parents("tr").attr("data-course-id");
         this.props.onChange("prev-grade", courseid, e.target.value);
     }
-    
+
     onProjGradeChange(e) {
         var courseid = $(e.target).parents("tr").attr("data-course-id");
         this.props.onChange("proj-grade", courseid, e.target.value);
     }
-    
+
     onRemove(e) {
         var courseid = $(e.target).parents("tr").attr("data-course-id");
         this.props.onChange("remove", courseid, e.target.value);
     }
-    
+
     render() {
         var rows = this.props.rows.map(function(row, index) {
             var disable_prev_grd_chkbx = row.repeat ? false : true;
@@ -53,21 +53,23 @@ class CourseTable extends Component {
                             <option>3</option>
                             <option>4</option>
                             <option>5</option>
+                            <option>6</option>
                         </select>
                     </td>
                     <td>
-                        <label className="checkbox-inline">
-                            <input className="calculator-repeat" type="checkbox" onChange={this.onRepeatChange} />
+                        <label className="form-control-static">
+                            <input id="repeatbox" className="calculator-repeat" type="checkbox" onChange={this.onRepeatChange} />
+                            {/*<span htmlFor="repeatbox" className="center-label">Yes</span>*/}
                         </label>
                     </td>
                     <td>
                         <PreviousGradeSelectBox onPrevGradeChange={this.onPrevGradeChange} disabled={disable_prev_grd_chkbx} />
                     </td>
-                    
+
                     <td>
                         <ProjectedGradeSelectBox prevGrade={row.previousGrade} onChange={this.onProjGradeChange} />
                     </td>
-                    
+
                     <td><button type="button" className="form-control-static close" onClick={this.onRemove}><span className="glyphicon glyphicon-remove"></span></button></td>
                 </tr>
             );
@@ -79,7 +81,7 @@ class CourseTable extends Component {
                     <thead>
                         <tr>
                             <th>Course</th>
-                            <th>Units</th>
+                            <th>Credit Hours</th>
                             <th>Repeat?</th>
                             <th>Previous Grade</th>
                             <th>Projected Grade</th>
@@ -153,7 +155,7 @@ class ProjectedGradeSelectBox extends Component {
                 <option key={index}>{grade}</option>
             );
         });
-        
+
         return(
             <select className="form-control calculator-projected-grade" onChange={this.props.onChange}>
                 <option></option>

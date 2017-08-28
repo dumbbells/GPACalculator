@@ -54,19 +54,19 @@ a.navigation-links:link {
     display:block;
     padding:8px;
     }
-    
+
 a.navigation-links:visited {
     color: #333;
     text-decoration: none;
     }
-    
+
 a.navigation-links:active {
     color: #333;
     text-decoration: none;
     }
-    
+
 a.navigation-links:hover {
-    color: #FFFFFF;
+    color: #000;
     background-color:#444444;
     text-decoration: none;
     display:block;
@@ -76,22 +76,22 @@ a.subnavigation-links:link {
     color:#000;
     text-decoration: none;
     }
-    
+
 a.subnavigation-links:visited {
     color: #000;
     text-decoration: none;
     }
-    
+
 a.subnavigation-links:active {
     color: #000;
     text-decoration: none;
     }
-    
+
 a.subnavigation-links:hover {
     color: #981E32;
     text-decoration: none;
     }
-    
+
 #primaryNavigation p, #primaryNavigation a {
     font-family:'proxima_novaregular',Helvetica,Arial,sans-serif;
     color:#444;
