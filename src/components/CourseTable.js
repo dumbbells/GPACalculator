@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import SelectMapping from '../objects/SelectMapping.js';
+import ReactTooltip from 'react-tooltip';
 
 class CourseTable extends Component {
 
@@ -59,13 +60,11 @@ class CourseTable extends Component {
                     <td>
                         <label className="form-control-static">
                             <input id="repeatbox" className="calculator-repeat" type="checkbox" onChange={this.onRepeatChange} />
-                            {/*<span htmlFor="repeatbox" className="center-label">Yes</span>*/}
                         </label>
                     </td>
                     <td>
                         <PreviousGradeSelectBox onPrevGradeChange={this.onPrevGradeChange} disabled={disable_prev_grd_chkbx} />
                     </td>
-
                     <td>
                         <ProjectedGradeSelectBox prevGrade={row.previousGrade} onChange={this.onProjGradeChange} />
                     </td>
@@ -81,10 +80,10 @@ class CourseTable extends Component {
                     <thead>
                         <tr>
                             <th>Course</th>
-                            <th>Credit Hours</th>
-                            <th>Repeat?</th>
-                            <th>Previous Grade</th>
-                            <th>Projected Grade</th>
+                            <th data-tip='Mark how many credit hours each course is worth in this column.'>Credit Hours</th>
+                            <th data-tip='Check the box if you have taken the class previously and plan to retake it this semester.'>Repeat?</th>
+                            <th data-tip='You can select a previous grade if the repeat box is checked.'>Previous Grade</th>
+                            <th data-tip='Enter a reasonable prediction for each course.'>Projected Grade</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -100,7 +99,9 @@ class CourseTable extends Component {
                     </tfoot>
                 </table>
                 </form>
+            <ReactTooltip />
             </div>
+
         );
     }
 }

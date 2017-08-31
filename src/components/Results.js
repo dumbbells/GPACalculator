@@ -28,7 +28,7 @@ class Results extends Component {
 
         if(this.props.unitsAttempted === 0 || this.props.currentGpa === 0)
         {
-            this.setState({calculatedGpa: "Form needs more information"});
+            this.setState({calculatedGpa: "This form needs more information. Please fill out all available fields."});
             return;
         }
 

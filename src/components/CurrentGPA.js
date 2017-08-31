@@ -23,11 +23,11 @@ class CurrentGPA extends Component {
                 <form className="form-inline">
                     <div className="form-group">
                         <label htmlFor="current-gpa" className="control-label side-padding">Current GPA:</label>
-                        <input type="text" className="form-control" id="current-gpa" autoComplete="off" onChange={this.onCurrentGpaChange} />
+                        <input data-tip='Enter your current cumulative GPA here.' type="text" className="form-control" id="current-gpa" autoComplete="off" onChange={this.onCurrentGpaChange} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="units-attempted" className="control-label side-padding">Total Credit Hours Attempted:</label>
-                        <input type="text" className="form-control" id="units-attempted" autoComplete="off" onChange={this.onUnitsAttemptedChange} />
+                        <input data-tip='Enter the total number of credit hours you have taken so far including repeated courses.' type="text" className="form-control" id="units-attempted" autoComplete="off" onChange={this.onUnitsAttemptedChange} />
                     </div>
                 </form>
                 <br/><br/>
